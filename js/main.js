@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     // Invoco le funzioni per cambiare slide
+    var clock = setInterval(nextSlide, 2000);
     $('.next').click(nextSlide);        // Al click richiamo la funzione per aggiornare l'immagine visualizzando la successiva
     $('.prev').click(prevSlide);
 
@@ -61,5 +62,7 @@ $(document).ready(function() {
         }
     };
 
+    // AUTOPLAY
+    setTimer
 
 });
