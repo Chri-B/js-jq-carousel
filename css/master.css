@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .slideshow {
@@ -66,11 +67,34 @@
     cursor: pointer;
 }
 
+.box-buttons {
+    padding-top: 20px;
+}
 
+#pause,
+#play {
+    border: 1px solid gray;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white;
+    color: gray;
+}
 
+#pause:hover {
+    background-color: #ececec;
+}
 
+#play:hover {
+    background-color: #ececec;
+}
 
-
+#play.clicked,
+#pause.clicked {
+    background-color: black;
+    border-color: black;
+    color: white;
+}
 
 
 /*  */

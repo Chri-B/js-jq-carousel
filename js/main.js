@@ -1,9 +1,33 @@
 $(document).ready(function() {
 
     // Invoco le funzioni per cambiare slide
-    var clock = setInterval(nextSlide, 2000);
-    $('.next').click(nextSlide);        // Al click richiamo la funzione per aggiornare l'immagine visualizzando la successiva
+    var nextResidui = 12; // passaggi di immagine residui (ogni giro completo equivale a 4 passaggi)
+    var clock = setInterval(giriResidui, 2000);
+
+    // Al click richiamo la funzione per aggiornare l'immagine visualizzando la successiva
+    $('.next').click(nextSlide);
     $('.prev').click(prevSlide);
+
+    // controllo scorrimento immagini al mouseenter (pausa) e mouseleave (riprendi e termina nextResidui)
+    $('.images').mouseenter(function() {
+        clearInterval(clock);
+    });
+    $('.images').mouseleave(function() {
+        clock = setInterval(giriResidui, 2000);
+    });
+
+    // attivazione pulsanti pausa e riprendi e "animazione" pulsante
+    $('#play').click(function() {
+        clock = setInterval(giriResidui, 2000);
+        $('#pause').removeClass('clicked');
+        $(this).addClass('clicked');
+    });
+    $('#pause').click(function() {
+        clearInterval(clock);
+        $('#play').removeClass('clicked');
+        $('#pause').addClass('clicked');
+    });
+
 
     // Definisco le funzioni nextImage e prevImage
     function nextSlide() {
@@ -62,7 +86,12 @@ $(document).ready(function() {
         }
     };
 
-    // AUTOPLAY
-    setTimer
-
+    function giriResidui() {
+        if (nextResidui === 0) { // quando i nextResidui (impostati a inizio codice) si esauriscono, termina la sequenza immagini
+            clearInterval(clock);
+        } else {
+            nextSlide();
+            nextResidui --;
+        }
+    }
 });
