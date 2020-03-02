@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     // Invoco le funzioni per cambiare slide
-    var nextResidui = 12; // passaggi di immagine residui (ogni giro completo equivale a 4 passaggi)
+    var nextResidui = 8; // passaggi di immagine residui (ogni giro completo equivale a 4 passaggi)
     var clock = setInterval(giriResidui, 2000);
 
     // Al click richiamo la funzione per aggiornare l'immagine visualizzando la successiva
@@ -27,6 +27,33 @@ $(document).ready(function() {
         $('#play').removeClass('clicked');
         $('#pause').addClass('clicked');
     });
+
+    // click pallino per andare a slide corrispondente !!così vado a sballare lo slide immagini che non finirà più alla prima!!
+    $('.fa-circle.first').click(function() {
+        $('.images img').removeClass('active');
+        $('.images img.first').addClass('active');
+        $('.slider-nav i.active').removeClass('active');
+        $('.slider-nav i.first').addClass('active');
+    })
+    $('.fa-circle.second').click(function() {
+        $('.images img').removeClass('active');
+        $('.images img.second').addClass('active');
+        $('.slider-nav i.active').removeClass('active');
+        $('.slider-nav i.second').addClass('active');
+    })
+    $('.fa-circle.third').click(function() {
+        $('.images img').removeClass('active');
+        $('.images img.third').addClass('active');
+        $('.slider-nav i.active').removeClass('active');
+        $('.slider-nav i.third').addClass('active');
+    })
+    $('.fa-circle.last').click(function() {
+        $('.images img').removeClass('active');
+        $('.images img.last').addClass('active');
+        $('.slider-nav i.active').removeClass('active');
+        $('.slider-nav i.last').addClass('active');
+    })
+
 
 
     // Definisco le funzioni nextImage e prevImage
@@ -89,6 +116,7 @@ $(document).ready(function() {
     function giriResidui() {
         if (nextResidui === 0) { // quando i nextResidui (impostati a inizio codice) si esauriscono, termina la sequenza immagini
             clearInterval(clock);
+            $('#play').removeClass('clicked'); // alla fine del giro di nextResidui 'oscuro' il pulsante play.
         } else {
             nextSlide();
             nextResidui --;
