@@ -83,10 +83,14 @@
 
 #pause:hover {
     background-color: #ececec;
+    color: black;
+    border-color: black;
 }
 
 #play:hover {
     background-color: #ececec;
+    color: black;
+    border-color: black;
 }
 
 #play.clicked,
